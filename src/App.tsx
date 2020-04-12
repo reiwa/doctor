@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core'
+import React, { FunctionComponent } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import MainHome from './home/MainHome'
+import { createTheme } from './theme/createTheme'
 
-function App() {
+const App: FunctionComponent = () => {
+  const theme = createTheme(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StylesProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path={'/'}>
+              <MainHome />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StylesProvider>
+  )
 }
 
-export default App;
+export default App
