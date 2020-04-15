@@ -32,6 +32,14 @@ export const createTheme = (dark = false) => {
     props: { MuiButton: { size: 'large', variant: 'contained' } },
     shadows: shadows.map((_, i) => (i === 0 ? 'none' : shadow)) as Shadows,
     shape: { borderRadius: 8 },
-    typography: { fontFamily: ['Helvetica', 'Roboto', 'sans-serif'].join(',') },
+    typography: {
+      fontFamily: [
+        'Hiragino Kaku Gothic ProN',
+        'ヒラギノ角ゴ ProN W3',
+        'Hiragino Sans',
+        'ヒラギノ角ゴシック',
+        'sans-serif',
+      ].join(','),
+    },
   })
 }
