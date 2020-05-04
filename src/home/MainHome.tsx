@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
-import AppMain from './components/AppMain'
+import Main from './components/Main'
 import AppQuestionAge from './components/AppQuestionAge'
 import AppQuestionBreathlessness from './components/AppQuestionBreathlessness'
 import AppQuestionContact from './components/AppQuestionContact'
@@ -28,7 +28,7 @@ import { Result } from './types/result'
 import { ResultValue } from './types/resultValue'
 
 const MainHome: FunctionComponent = () => {
-  const [histories, setHistories] = useState<AppHistory[]>(['fever'])
+  const [histories, setHistories] = useState<AppHistory[]>(['who'])
 
   const [logs, setLogs] = useState<[AppHistory, ResultValue[]][]>([])
 
@@ -51,20 +51,18 @@ const MainHome: FunctionComponent = () => {
     who: null,
   })
 
-  console.log('logs', logs)
-
   const resultRoute = toAppResultRoute(result)
 
   // render result view
   if (resultRoute !== null) {
     return (
-      <AppMain>
+      <Main>
         {resultRoute === 'symptoms119ForChild' && <AppResult119ForChild />}
         {resultRoute === 'symptoms119ForAdult' && <AppResult119ForAdult />}
         {resultRoute === 'normal' && <AppResultNormal />}
         {resultRoute === 'familyDoctor' && <AppResultFamilyDoctor />}
         {resultRoute === 'center' && <AppResultCenter />}
-      </AppMain>
+      </Main>
     )
   }
 
@@ -79,7 +77,7 @@ const MainHome: FunctionComponent = () => {
 
   // render question view
   return (
-    <AppMain>
+    <Main>
       {current === 'age' && <AppQuestionAge onNext={onNext} />}
       {current === 'breathlessness' && (
         <AppQuestionBreathlessness onNext={onNext} />
@@ -102,7 +100,7 @@ const MainHome: FunctionComponent = () => {
       {current === 'travel' && <AppQuestionTravel onNext={onNext} />}
       {current === 'travelDate' && <AppQuestionTravelDate onNext={onNext} />}
       {current === 'who' && <AppQuestionWho onNext={onNext} />}
-    </AppMain>
+    </Main>
   )
 }
 

@@ -18,8 +18,6 @@ const AppQuestionAge: FunctionComponent<Props> = ({ onNext }) => {
     onNext(['age', parseInt(value)])
   }
 
-  const classes = useStyles()
-
   return (
     <AppQuestion text={'年齢を入力してください'}>
       <TextField
@@ -41,15 +39,5 @@ const AppQuestionAge: FunctionComponent<Props> = ({ onNext }) => {
     </AppQuestion>
   )
 }
-
-const useStyles = makeStyles<Theme>(({ breakpoints, spacing }) => {
-  return {
-    textField: {
-      [breakpoints.up('md')]: {
-        width: 120,
-      },
-    },
-  }
-})
 
 export default AppQuestionAge

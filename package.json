@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:tailwind": "postcss src/index.css -o public/index.css",
+    "prebuild": "NODE_ENV=production npm -s run build:tailwind",
+    "prestart": "NODE_ENV=development npm -s run build:tailwind",
+    "start": "react-scripts start"
   },
   "author": "reiwa <reiwa@outlook.com.vn>",
   "license": "MIT",
@@ -24,11 +25,15 @@
     "@types/webpack-env": "^1.15.1",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^7.1.1",
+    "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "rxjs": "^6.5.5",
+    "tailwindcss": "^1.4.4",
     "typescript": "~3.7.2"
   },
   "devDependencies": {
